@@ -21,9 +21,10 @@ const ELLIPSIS = '\u2026';
 
 let settings;
 
-const SensorsItem = class SensoryPerception_SensorsItem extends PopupMenu.PopupBaseMenuItem {
-  constructor(type, label, value) {
-    super();
+var SensorsItem = GObject.registerClass(
+class SensoryPerception_SensorsItem extends PopupMenu.PopupBaseMenuItem {
+  _init(type, label, value) {
+    super._init();
 
     this.connect('activate', function () {
       settings.set_string('main-sensor', label);
@@ -53,7 +54,7 @@ const SensorsItem = class SensoryPerception_SensorsItem extends PopupMenu.PopupB
   getLabel() {
     return this._label;
   }
-};
+});
 
 var SensorsMenuButton = GObject.registerClass(
 class SensoryPerception_SensorsMenuButton extends PanelMenu.Button {
